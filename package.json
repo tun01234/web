@@ -1,0 +1,7 @@
+{
+  "name": "render-slot",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": { "start": "node server.mjs" },
+  "dependencies": { "express": "^4.19.2", "socket.io": "^4.7.4" }
+}
