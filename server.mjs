@@ -1,6 +1,11 @@
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
+const io = new Server(httpServer, {
+  cors: { origin: process.env.ALLOWED_ORIGIN || "*" },
+  transports: ["websocket","polling"]
+});
+
 
 const PORT       = process.env.PORT || 3000;
 const GAMES      = Number(process.env.GAMES || 36);
@@ -46,3 +51,4 @@ function tick(emitOnly=false){
 setInterval(()=>tick(false), INTERVALMS);
 
 httpServer.listen(PORT, ()=>console.log("Server ▶", PORT));
+
