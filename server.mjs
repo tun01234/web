@@ -9,6 +9,12 @@ const MAX        = 85;
 const STEP_MIN   = -2, STEP_MAX = 2;
 const INTERVALMS = Number(process.env.INTERVAL_MS || 20_000);
 
+// CORS for REST endpoints
+app.use((req,res,next)=>{
+  res.setHeader("Access-Control-Allow-Origin", process.env.ALLOWED_ORIGIN || "*");
+  next();
+});
+
 // serve static UI from web/
 const app = express();
 app.use(express.static("web"));
@@ -47,5 +53,6 @@ function tick(emitOnly=false){
 setInterval(()=>tick(false), INTERVALMS);
 
 httpServer.listen(PORT, ()=>console.log("Server ▶", PORT));
+
 
 
