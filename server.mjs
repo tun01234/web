@@ -5,7 +5,7 @@ import { Server } from "socket.io";
 const PORT       = process.env.PORT || 3000;
 const GAMES      = Number(process.env.GAMES || 36);
 const MAX        = 85;
-const STEP_MIN   = -2, STEP_MAX = 2;
+const STEP_MIN   = -5, STEP_MAX = 5;
 const INTERVALMS = Number(process.env.INTERVAL_MS || 20_000);
 
 const app = express();
@@ -52,3 +52,4 @@ function tick(emitOnly=false) {
 setInterval(() => tick(false), INTERVALMS);
 
 httpServer.listen(PORT, () => console.log("Server ▶", PORT));
+
